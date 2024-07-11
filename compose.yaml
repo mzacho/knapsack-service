@@ -1,0 +1,46 @@
+services:
+  api:
+    build:
+      context: ./services/api
+      dockerfile: ../rust-1.79-Dockerfile
+      args:
+        APP_NAME: api
+        DEPENDENCIES: libpq-dev
+    ports:
+      - "6543:8000"
+    environment:
+      AMQP_ADDRESS: amqp://rabbitmq:5672
+      DATABASE_USER: postgres
+      DATABASE_PASS: password
+      DATABASE_HOST: postgres
+      ROCKET_PORT: 8000
+      ROCKET_ADDRESS: 0.0.0.0
+      RUST_BACKTRACE: full
+
+  optimizer:
+    build:
+      context: ./services/optimizer
+      dockerfile: ../rust-1.79-Dockerfile
+      args:
+        APP_NAME: optimizer
+        DEPENDENCIES: libpq-dev
+    environment:
+      AMQP_ADDRESS: amqp://rabbitmq:5672
+      DATABASE_USER: postgres
+      DATABASE_PASS: password
+      DATABASE_HOST: postgres
+      RUST_BACKTRACE: full
+    deploy:
+      replicas: 2
+
+  postgres:
+    build: db/postgres
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_PASSWORD: password
+
+  rabbitmq:
+    build: db/rabbitmq
+    ports:
+      - "8080:15672" # admin interface accessible at http://localhost:8080

@@ -1,0 +1,5 @@
+.cargo
+.rustup
+.direnv
+services/api/target
+services/optimizer/target
