@@ -1,3 +1,5 @@
+For the assignment see `ASSIGMENT.md`.
+
 ## Services
 
 API:
