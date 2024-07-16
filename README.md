@@ -1,4 +1,4 @@
-For the assignment see `ASSIGMENT.md`.
+This repo contains the assignment (`ASSIGMENT.md`) and solution to a technical case I recently did at a large anonymous company. There's [a linkedin post](https://www.linkedin.com/posts/martin-zacho_github-mzachoknapsack-service-activity-7218992159180390400-tF31?utm_source=share&utm_medium=member_desktop) (in Danish) accompanying it.
 
 ## Services
 
