@@ -1,5 +1,7 @@
 .cargo
 .rustup
 .direnv
+.terraform*
+*.tfstate*
 services/api/target
 services/optimizer/target
